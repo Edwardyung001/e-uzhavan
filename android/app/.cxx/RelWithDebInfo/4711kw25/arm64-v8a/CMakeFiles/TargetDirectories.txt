@@ -1,0 +1,2 @@
+D:/e_uzhavan/e_uzhavan/android/app/.cxx/RelWithDebInfo/4711kw25/arm64-v8a/CMakeFiles/edit_cache.dir
+D:/e_uzhavan/e_uzhavan/android/app/.cxx/RelWithDebInfo/4711kw25/arm64-v8a/CMakeFiles/rebuild_cache.dir
