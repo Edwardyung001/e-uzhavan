@@ -1,3 +1,4 @@
+import 'package:e_uzhavan/user/order_list_screen.dart';
 import 'package:e_uzhavan/user/profile.dart' show ProfilePage;
 import 'package:e_uzhavan/user/services_view.dart' show ServicesPage;
 import 'package:flutter/material.dart';
@@ -61,7 +62,7 @@ class _UserDashboardState extends State<UserDashboard> {
       )
           : HomeListScreen(farmers: farmers), // Show list if data exists
       const ServicesPage(),
-      const CartPage(cartItems: []),
+      const OrderListScreen(),
       const ProfilePage(),
     ];
   }
@@ -73,7 +74,7 @@ class _UserDashboardState extends State<UserDashboard> {
       case 1:
         return "Our Services"; // Services
       case 2:
-        return "Your Cart"; // Cart
+        return "Order List"; // Cart
       case 3:
         return "Profile"; // Profile
       default:
@@ -105,7 +106,7 @@ class _UserDashboardState extends State<UserDashboard> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.miscellaneous_services), label: "Services"),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "Cart"),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "Order List"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
       ),

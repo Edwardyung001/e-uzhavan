@@ -18,10 +18,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
   // Function to increase quantity
   void increaseQuantity() {
-    setState(() {
-      quantity++;
-    });
+    int availableQuantity = int.tryParse(widget.product['productQuantity'].toString().replaceAll(RegExp(r'[^0-9]'), '')) ?? 0;
+
+    if (quantity < availableQuantity){
+      setState(() {
+        quantity++;
+      });
+    }
   }
+
 
   // Function to decrease quantity (minimum 1)
   void decreaseQuantity() {

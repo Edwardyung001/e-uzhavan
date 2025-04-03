@@ -73,7 +73,7 @@ class LoginPage extends StatelessWidget {
                 ),
 
                 Text(
-                  "Welcome Back!",
+                  "Welcome E-Uzhavan!",
                   style: GoogleFonts.poppins(fontSize: 28, fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(height: 10),

@@ -1,6 +1,6 @@
+import 'package:e_uzhavan/db_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'order_success_page.dart';
 
 class OrderDetailsPage extends StatefulWidget {
@@ -18,7 +18,7 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
   final TextEditingController addressController = TextEditingController();
   String paymentMethod = "Cash on Delivery"; // Default payment method
 
-  void placeOrder() {
+  void placeOrder() async {
     if (nameController.text.isEmpty || phoneController.text.isEmpty || addressController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Please fill all details")),
@@ -26,7 +26,28 @@ class _OrderDetailsPageState extends State<OrderDetailsPage> {
       return;
     }
 
-    // ✅ Navigate to Order Success Page
+    double totalAmount = widget.cartItems.fold(
+        0, (sum, item) => sum + (item['productPrice'] * item['quantity']));
+
+    // Create order data
+    Map<String, dynamic> order = {
+      'customerName': nameController.text,
+      'phone': phoneController.text,
+      'address': addressController.text,
+      'paymentMethod': paymentMethod,
+      'status': "Order Placed Successfully", // ✅ Add initial status
+    };
+
+    // Insert into database
+    await DatabaseHelper.instance.insertOrder(
+      nameController.text,
+      phoneController.text,
+      addressController.text,
+      paymentMethod,
+      "Order Placed Successfully", // ✅ Pass status here
+    );
+
+    // Navigate to success page
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => const OrderSuccessPage()),
